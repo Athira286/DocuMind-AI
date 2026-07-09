@@ -1,4 +1,5 @@
 import streamlit as st
+from utils.text_splitter import split_text
 
 from utils.pdf_loader import extract_text
 
@@ -20,10 +21,20 @@ uploaded_file = st.file_uploader(
 
 if uploaded_file:
 
-    st.success("PDF uploaded successfully!")
+    with st.spinner("📖 Processing your PDF..."):
 
-    text = extract_text(uploaded_file)
+        text = extract_text(uploaded_file)
 
-    st.subheader("Extracted Text Preview")
+        chunks = split_text(text)
 
-    st.write(text[:1000])
+    st.success("✅ PDF processed successfully!")
+
+    st.subheader("Total Chunks")
+
+    st.write(len(chunks))
+
+    for i, chunk in enumerate(chunks):
+
+        st.subheader(f"Chunk {i+1}")
+
+        st.write(chunk)
