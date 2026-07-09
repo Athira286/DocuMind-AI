@@ -2,7 +2,7 @@ import streamlit as st
 from utils.text_splitter import split_text
 from utils.embeddings import create_embeddings
 from utils.pdf_loader import extract_text
-
+from utils.vector_store import create_vector_store
 
 st.set_page_config(
     page_title="Chat with PDF",
@@ -29,6 +29,8 @@ if uploaded_file:
 
         embeddings = create_embeddings(chunks)
 
+        vector_store = create_vector_store(embeddings)
+
     st.success("✅ PDF processed successfully!")
 
     st.subheader("Document Statistics")
@@ -38,6 +40,9 @@ if uploaded_file:
     st.write(f"Embedding Shape: {embeddings.shape}")
     with st.expander("Preview First Chunk"):
         st.write(chunks[0])
+    
+    st.subheader("Vector Store")
+    st.success("FAISS index created successfully!")
 
     for i, chunk in enumerate(chunks):
 
