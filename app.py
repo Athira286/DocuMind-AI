@@ -3,6 +3,8 @@ from utils.text_splitter import split_text
 from utils.embeddings import create_embeddings
 from utils.pdf_loader import extract_text
 from utils.vector_store import create_vector_store
+from utils.embeddings import create_query_embedding
+from utils.vector_store import search_vector_store
 
 st.set_page_config(
     page_title="Chat with PDF",
@@ -43,9 +45,18 @@ if uploaded_file:
     
     st.subheader("Vector Store")
     st.success("FAISS index created successfully!")
-
-    for i, chunk in enumerate(chunks):
-
-        st.subheader(f"Chunk {i+1}")
-
-        st.write(chunk)
+    st.subheader("Ask a Question")
+    question = st.text_input(
+        "Ask something about the PDF"
+    )
+    if question:
+        query_embedding = create_query_embedding(question)
+        indices = search_vector_store(
+            vector_store,
+            query_embedding
+        )
+        st.subheader("Retrieved Chunks")
+        for idx in indices:
+            st.write(f"### Chunk {idx+1}")
+            st.write(chunks[idx])
+            st.divider()

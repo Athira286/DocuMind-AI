@@ -16,3 +16,14 @@ def create_vector_store(embeddings):
     index.add(embeddings)
 
     return index
+
+def search_vector_store(index, query_embedding, k=3):
+    """
+    Search the FAISS index for the top k similar chunks.
+    """
+
+    query_embedding = np.array([query_embedding]).astype("float32")
+
+    distances, indices = index.search(query_embedding, k)
+
+    return indices[0]
