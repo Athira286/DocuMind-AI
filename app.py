@@ -31,12 +31,13 @@ if uploaded_file:
 
     st.success("✅ PDF processed successfully!")
 
-    st.subheader("Total Chunks")
-    st.subheader("Embedding Shape")
+    st.subheader("Document Statistics")
     
-    st.write(embeddings.shape)
+    st.write(f"Total Chunks: {len(chunks)}")
 
-    st.write(len(chunks))
+    st.write(f"Embedding Shape: {embeddings.shape}")
+    with st.expander("Preview First Chunk"):
+        st.write(chunks[0])
 
     for i, chunk in enumerate(chunks):
 
