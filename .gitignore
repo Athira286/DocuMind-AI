@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.pyc
+
+# Environment
+.env
+
+# VS Code
+.vscode/
+
+# Uploaded PDFs
+uploads/*
+!uploads/.gitkeep
+
+# Vector Database
+vectorstore/*
+!vectorstore/.gitkeep
+
+# OS files
+.DS_Store
+Thumbs.db
