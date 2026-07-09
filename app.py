@@ -2,7 +2,7 @@ import streamlit as st
 
 from utils.chatbot import (
     process_pdf,
-    retrieve_chunks
+    answer_question
 )
 
 st.set_page_config(
@@ -48,18 +48,18 @@ if uploaded_file:
 
     if question:
 
-        retrieved_chunks = retrieve_chunks(
+        answer, retrieved_chunks = answer_question(
             question,
             vector_store,
             chunks
         )
-
-        st.subheader("📄 Retrieved Chunks")
-
-        for i, chunk in enumerate(retrieved_chunks):
-
-            st.write(f"### Result {i+1}")
-
-            st.write(chunk)
-
-            st.divider()
+        
+        st.subheader("🤖 Answer")
+        
+        st.write(answer)
+        
+        with st.expander("📄 Source Chunks"):
+            for i, chunk in enumerate(retrieved_chunks):
+                st.write(f"### Source {i+1}")
+                st.write(chunk)
+                st.divider()

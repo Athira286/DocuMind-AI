@@ -8,6 +8,7 @@ from utils.vector_store import (
     create_vector_store,
     search_vector_store
 )
+from utils.llm import generate_answer
 
 
 def process_pdf(uploaded_file):
@@ -38,3 +39,18 @@ def retrieve_chunks(question, vector_store, chunks):
         retrieved_chunks.append(chunks[idx])
 
     return retrieved_chunks
+
+def answer_question(question, vector_store, chunks):
+
+    retrieved_chunks = retrieve_chunks(
+        question,
+        vector_store,
+        chunks
+    )
+
+    answer = generate_answer(
+        question,
+        retrieved_chunks
+    )
+
+    return answer, retrieved_chunks
