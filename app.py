@@ -1,6 +1,6 @@
 import streamlit as st
 from utils.text_splitter import split_text
-
+from utils.embeddings import create_embeddings
 from utils.pdf_loader import extract_text
 
 
@@ -27,9 +27,14 @@ if uploaded_file:
 
         chunks = split_text(text)
 
+        embeddings = create_embeddings(chunks)
+
     st.success("✅ PDF processed successfully!")
 
     st.subheader("Total Chunks")
+    st.subheader("Embedding Shape")
+    
+    st.write(embeddings.shape)
 
     st.write(len(chunks))
 
