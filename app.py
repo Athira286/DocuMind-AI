@@ -33,12 +33,14 @@ header {visibility:hidden;}
 """, unsafe_allow_html=True)
 
 st.markdown("""
-# DocuMind-AI
+<h1 style='font-size:52px;font-weight:800;margin-bottom:0;'>
+DocuMind-AI
+</h1>
 
-##### AI-powered Document Assistant
-
-Ask questions, summarize documents, extract key insights, and chat naturally with your PDFs using Retrieval-Augmented Generation (RAG) and Gemini AI.
-""")
+<p style='font-size:18px;color:#B8B8B8;margin-top:8px;'>
+Understand and chat with your PDF documents using Gemini AI and Retrieval-Augmented Generation.
+</p>
+""", unsafe_allow_html=True)
 
 st.divider()
 st.markdown("---")
@@ -90,7 +92,19 @@ if uploaded_file:
         
         st.subheader("Response")
         
-        st.write(answer)
+        st.markdown(
+            f"""
+        <div style="
+        padding:20px;
+        border-radius:12px;
+        background:#1e1e1e;
+        font-size:18px;
+        line-height:1.8;
+        ">
+        {answer}
+        </div>
+        """,
+        unsafe_allow_html=True)
         
         with st.expander("📄 Source Chunks"):
             for i, chunk in enumerate(retrieved_chunks):
