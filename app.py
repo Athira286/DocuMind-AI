@@ -106,11 +106,11 @@ header {
 
 st.markdown("""
 <h1 style="
-font-size:60px;
+font-size:40px;
 font-weight:800;
 margin-bottom:0;
 ">
-DocuMind-AI
+📚 DocuMind-AI
 </h1>
 """, unsafe_allow_html=True)
 
