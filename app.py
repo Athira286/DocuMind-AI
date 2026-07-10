@@ -86,9 +86,21 @@ st.markdown(
 
 st.markdown("""
 <style>
-#MainMenu {visibility:hidden;}
-footer {visibility:hidden;}
-header {visibility:hidden;}
+
+/* Hide only menu and footer */
+#MainMenu {
+    visibility:hidden;
+}
+
+footer {
+    visibility:hidden;
+}
+
+/* Keep the header visible so the sidebar toggle works */
+header {
+    background: transparent;
+}
+
 </style>
 """, unsafe_allow_html=True)
 
@@ -113,16 +125,23 @@ Chat with any PDF using Retrieval-Augmented Generation (RAG) and Gemini AI.
 """, unsafe_allow_html=True)
 st.markdown("<br>", unsafe_allow_html=True)
 st.divider()
-st.markdown("---")
 
 st.sidebar.markdown("## 📄 Upload Document")
 st.sidebar.markdown("""
+<div style="
+display:flex;
+justify-content:center;
+align-items:center;
+margin:8px 0 18px 0;
+">
 <h2 style="
-text-align:center;
+margin:0;
 font-weight:700;
+text-align:center;
 ">
 📄 DocuMind AI
 </h2>
+</div>
 """, unsafe_allow_html=True)
 
 st.sidebar.divider()
