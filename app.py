@@ -12,6 +12,66 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
+st.markdown("""
+<style>
+
+/* Main content width */
+.block-container{
+    padding-top:2rem;
+    padding-bottom:2rem;
+    padding-left:4rem;
+    padding-right:4rem;
+}
+
+/* Main Title */
+h1{
+    font-size:3rem !important;
+    font-weight:800 !important;
+    color:#FAFAFA;
+    margin-bottom:0.2rem;
+}
+
+/* Section headings */
+h2{
+    font-size:2rem !important;
+    font-weight:700 !important;
+    margin-top:1.5rem;
+}
+
+/* Smaller headings */
+h3{
+    font-size:1.4rem !important;
+    font-weight:600 !important;
+}
+
+/* Normal text */
+p, label, div{
+    font-size:17px !important;
+    line-height:1.7;
+}
+
+/* Sidebar */
+[data-testid="stSidebar"]{
+    padding-top:1rem;
+}
+
+/* Buttons */
+.stButton>button{
+    border-radius:10px;
+    font-weight:600;
+    height:45px;
+}
+
+/* Text Input */
+.stTextInput input{
+    border-radius:10px;
+    font-size:17px;
+    padding:12px;
+}
+
+</style>
+""", unsafe_allow_html=True)
+
 st.markdown(
     """
     <style>
@@ -33,19 +93,39 @@ header {visibility:hidden;}
 """, unsafe_allow_html=True)
 
 st.markdown("""
-<h1 style='font-size:52px;font-weight:800;margin-bottom:0;'>
+<h1 style="
+font-size:60px;
+font-weight:800;
+margin-bottom:0;
+">
 DocuMind-AI
 </h1>
-
-<p style='font-size:18px;color:#B8B8B8;margin-top:8px;'>
-Understand and chat with your PDF documents using Gemini AI and Retrieval-Augmented Generation.
-</p>
 """, unsafe_allow_html=True)
 
+st.markdown("""
+<p style="
+font-size:18px;
+color:#9ca3af;
+margin-top:0;
+">
+Chat with any PDF using Retrieval-Augmented Generation (RAG) and Gemini AI.
+</p>
+""", unsafe_allow_html=True)
+st.markdown("<br>", unsafe_allow_html=True)
 st.divider()
 st.markdown("---")
 
 st.sidebar.markdown("## 📄 Upload Document")
+st.sidebar.markdown("""
+<h2 style="
+text-align:center;
+font-weight:700;
+">
+📄 DocuMind AI
+</h2>
+""", unsafe_allow_html=True)
+
+st.sidebar.divider()
 uploaded_file = st.sidebar.file_uploader(
     "Upload PDF",
     type="pdf"
@@ -74,8 +154,11 @@ if uploaded_file:
 
 
 
-
-    st.markdown("## ❓ Ask a Question")
+    st.markdown("""
+    <h2 style="font-size:34px;font-weight:700;">
+    ❓ Ask a Question about your document
+    </h2>
+    """, unsafe_allow_html=True)
 
     question = st.text_input(
         "Ask anything about your document...",
@@ -90,14 +173,19 @@ if uploaded_file:
             chunks
         )
         
-        st.subheader("Response")
+        st.markdown("""
+        <h2 style="font-size:30px;font-weight:700;">
+        Response
+        </h2>
+        """, unsafe_allow_html=True)
         
         st.markdown(
             f"""
         <div style="
-        padding:20px;
+        padding:24px;
         border-radius:12px;
-        background:#1e1e1e;
+        background:#1f2937;
+        border:1px solid #333;
         font-size:18px;
         line-height:1.8;
         ">
@@ -108,6 +196,6 @@ if uploaded_file:
         
         with st.expander("📄 Source Chunks"):
             for i, chunk in enumerate(retrieved_chunks):
-                st.write(f"### Source {i+1}")
-                st.write(chunk)
+                st.markdown(f"### 📄 Retrieved Context {i+1}")
+                st.info(chunk)
                 st.divider()
