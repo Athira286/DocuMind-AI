@@ -1,4 +1,7 @@
 import streamlit as st
+import os
+
+st.write("API Key exists:", os.getenv("GOOGLE_API_KEY") is not None)
 
 from utils.chatbot import (
     process_pdf,
