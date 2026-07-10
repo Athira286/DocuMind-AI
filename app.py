@@ -136,22 +136,27 @@ Chat with any PDF using Retrieval-Augmented Generation (RAG) and Gemini AI.
 st.markdown("<br>", unsafe_allow_html=True)
 st.divider()
 
-st.sidebar.markdown("## 📄 Upload Document")
 st.sidebar.markdown("""
-<div style="
-display:flex;
-justify-content:center;
-align-items:center;
-margin:8px 0 18px 0;
-">
 <h2 style="
-margin:0;
-font-weight:700;
+font-weight:800;
+font-style:oblique;
+margin-bottom:0;
+">
+📄 Upload Document
+</h2>
+""", unsafe_allow_html=True)
+st.sidebar.markdown("""
+<h2 style="
 text-align:center;
+font-family:'Segoe UI',sans-serif;
+font-weight:800;
+letter-spacing:0.5px;
+transform:skew(-4deg);
+margin-top:0;
+margin-bottom:0;
 ">
 📄 DocuMind AI
 </h2>
-</div>
 """, unsafe_allow_html=True)
 
 st.sidebar.divider()
