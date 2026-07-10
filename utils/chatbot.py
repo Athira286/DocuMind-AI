@@ -12,7 +12,6 @@ from utils.llm import generate_answer
 
 
 def process_pdf(uploaded_file):
-
     text = extract_text(uploaded_file)
 
     chunks = split_text(text)

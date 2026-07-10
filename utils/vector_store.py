@@ -1,7 +1,8 @@
+import streamlit as st
 import faiss
 import numpy as np
 
-
+@st.cache_resource
 def create_vector_store(embeddings):
     """
     Create a FAISS index from document embeddings.

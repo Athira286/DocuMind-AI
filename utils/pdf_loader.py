@@ -1,6 +1,7 @@
+import streamlit as st
 from pypdf import PdfReader
 
-
+@st.cache_data
 def extract_text(pdf_file):
     """
     Extract text from all pages of a PDF.

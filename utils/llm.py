@@ -1,3 +1,4 @@
+import streamlit as st
 import os
 
 from dotenv import load_dotenv
@@ -5,9 +6,12 @@ from google import genai
 
 load_dotenv()
 
-client = genai.Client(
-    api_key=os.getenv("GOOGLE_API_KEY")
-)
+@st.cache_resource
+def get_client():
+    return genai.Client(
+        api_key=os.getenv("GOOGLE_API_KEY")
+    )
+client = get_client()
 
 
 def generate_answer(question, retrieved_chunks):
