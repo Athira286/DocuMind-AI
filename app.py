@@ -14,7 +14,14 @@ st.set_page_config(
 
 st.markdown("""
 <style>
-
+/* Background */
+.stApp{
+    background:
+    radial-gradient(circle at 15% 20%, rgba(124,58,237,.20), transparent 30%),
+    radial-gradient(circle at 90% 10%, rgba(168,85,247,.15), transparent 25%),
+    radial-gradient(circle at 70% 80%, rgba(99,102,241,.12), transparent 25%),
+    #0e1117;
+}
 /* Main content width */
 .block-container{
     padding-top:2rem;
@@ -109,6 +116,9 @@ st.markdown("""
 font-size:40px;
 font-weight:800;
 margin-bottom:0;
+background:linear-gradient(90deg,#ffffff,#c4b5fd,#8b5cf6);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
 ">
 📚 DocuMind-AI
 </h1>
@@ -205,6 +215,7 @@ if uploaded_file:
         border-radius:12px;
         background:#1f2937;
         border:1px solid #333;
+        box-shadow:0 0 25px rgba(139,92,246,.15);
         font-size:18px;
         line-height:1.8;
         ">
